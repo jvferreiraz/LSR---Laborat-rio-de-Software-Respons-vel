@@ -1,1 +1,30 @@
-/target/
+# Maven
+target/
+.m2/
+*.jar
+*.war
+*.zip
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.code-workspace
+.DS_Store
+*.class
+
+# Spring Boot
+log/
+*.log
+.gradle/
+build/
+
+# Node (if using frontend build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment
+.env
+.env.local
+local.properties
