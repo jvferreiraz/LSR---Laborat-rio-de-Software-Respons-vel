@@ -1,14 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String erro = (String) request.getAttribute("erro");
-    String sucesso = (String) request.getAttribute("sucesso");
 %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - FindGo</title>
+    <title>Criar Conta - FindGo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -61,7 +60,7 @@
             50% { transform: translateY(20px); }
         }
 
-        .login-container {
+        .signup-container {
             position: relative;
             z-index: 10;
             width: 100%;
@@ -69,7 +68,7 @@
             padding: 20px;
         }
 
-        .login-card {
+        .signup-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -91,7 +90,7 @@
             }
         }
 
-        .login-header {
+        .signup-header {
             text-align: center;
             margin-bottom: 40px;
         }
@@ -101,14 +100,14 @@
             margin-bottom: 15px;
         }
 
-        .login-header h1 {
+        .signup-header h1 {
             font-size: 28px;
             color: #5d4037;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
-        .login-header p {
+        .signup-header p {
             color: #8b6f47;
             font-size: 14px;
         }
@@ -125,12 +124,6 @@
             background: #fee2e2;
             color: #dc2626;
             border: 1px solid #fca5a5;
-        }
-
-        .alert-success {
-            background: #dcfce7;
-            color: #059669;
-            border: 1px solid #86efac;
         }
 
         @keyframes slideDown {
@@ -156,6 +149,7 @@
             font-size: 14px;
         }
 
+        input[type="text"],
         input[type="email"],
         input[type="password"] {
             width: 100%;
@@ -168,6 +162,7 @@
             background: #fafaf8;
         }
 
+        input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="password"]:focus {
             outline: none;
@@ -176,40 +171,27 @@
             box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
         }
 
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
-
-        .remember-forgot label {
-            margin: 0;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .remember-forgot input[type="checkbox"] {
-            margin-right: 6px;
-            cursor: pointer;
-            accent-color: #8b6f47;
-        }
-
-        .remember-forgot a {
+        .password-requirements {
+            font-size: 12px;
             color: #8b6f47;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
+            margin-top: 6px;
+            padding: 8px;
+            background: rgba(212, 165, 116, 0.05);
+            border-radius: 8px;
         }
 
-        .remember-forgot a:hover {
-            color: #d4a574;
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 4px 0;
         }
 
-        .login-btn {
+        .requirement i {
+            font-size: 10px;
+        }
+
+        .signup-btn {
             width: 100%;
             padding: 13px;
             background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
@@ -221,93 +203,42 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 8px 20px rgba(139, 111, 71, 0.3);
+            margin-top: 10px;
         }
 
-        .login-btn:hover {
+        .signup-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 30px rgba(139, 111, 71, 0.4);
         }
 
-        .login-btn:active {
+        .signup-btn:active {
             transform: translateY(0);
         }
 
-        .divider {
-            text-align: center;
-            margin: 30px 0;
-            position: relative;
-            color: #c0b5a8;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .divider::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #e0d5c7;
-        }
-
-        .divider::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #e0d5c7;
-        }
-
-        .social-login {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .social-btn {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #e0d5c7;
-            background: #fafaf8;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            color: #5d4037;
-        }
-
-        .social-btn:hover {
-            border-color: #d4a574;
-            background: #fff;
-            transform: translateY(-2px);
-        }
-
-        .signup-link {
+        .login-link {
             text-align: center;
             color: #8b6f47;
             font-size: 14px;
+            margin-top: 25px;
         }
 
-        .signup-link a {
+        .login-link a {
             color: #d4a574;
             text-decoration: none;
             font-weight: 700;
             transition: color 0.3s ease;
         }
 
-        .signup-link a:hover {
+        .login-link a:hover {
             color: #8b6f47;
         }
 
         @media (max-width: 480px) {
-            .login-card {
+            .signup-card {
                 padding: 40px 25px;
             }
 
-            .login-header h1 {
+            .signup-header h1 {
                 font-size: 24px;
             }
 
@@ -318,12 +249,12 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
+    <div class="signup-container">
+        <div class="signup-card">
+            <div class="signup-header">
                 <div class="logo"><i class="fas fa-location-arrow"></i></div>
-                <h1>FindGo</h1>
-                <p>Encontre e compartilhe seus itens</p>
+                <h1>Criar Conta</h1>
+                <p>Junte-se a nós na busca por itens perdidos</p>
             </div>
 
             <% if (erro != null) { %>
@@ -332,77 +263,73 @@
                 </div>
             <% } %>
 
-            <% if (sucesso != null) { %>
-                <div class="alert alert-success">
-                    <i class="fas fa-check-circle"></i> <%= sucesso %>
+            <form action="${pageContext.request.contextPath}/signup" method="POST" id="signupForm">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
                 </div>
-            <% } %>
 
-            <form action="${pageContext.request.contextPath}/login" method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="seu@email.com" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="senha" placeholder="Digite sua senha" required>
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Escolha uma senha forte" required>
+                    <div class="password-requirements">
+                        <div class="requirement">
+                            <i class="fas fa-circle"></i>
+                            <span>Mínimo 6 caracteres</span>
+                        </div>
+                        <div class="requirement">
+                            <i class="fas fa-circle"></i>
+                            <span>Use letras, números e símbolos</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="remember-forgot">
-                    <label>
-                        <input type="checkbox" name="remember">
-                        Lembrar de mim
-                    </label>
-                    <a href="#">Esqueceu a senha?</a>
+                <div class="form-group">
+                    <label for="confirmaSenha">Confirmar Senha</label>
+                    <input type="password" id="confirmaSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
                 </div>
 
-                <button type="submit" class="login-btn">
-                    <i class="fas fa-sign-in-alt"></i> Entrar
+                <button type="submit" class="signup-btn">
+                    <i class="fas fa-user-plus"></i> Criar Conta
                 </button>
             </form>
 
-            <div class="divider">OU</div>
-
-            <div class="social-login">
-                <button class="social-btn" type="button" title="Login com Google" onclick="alert('Google Login não configurado')">
-                    <i class="fab fa-google"></i>
-                </button>
-                <button class="social-btn" type="button" title="Login com Facebook" onclick="alert('Facebook Login não configurado')">
-                    <i class="fab fa-facebook"></i>
-                </button>
-                <button class="social-btn" type="button" title="Login com GitHub" onclick="alert('GitHub Login não configurado')">
-                    <i class="fab fa-github"></i>
-                </button>
-            </div>
-
-            <p class="signup-link">
-                Não tem conta? <a href="${pageContext.request.contextPath}/signup.jsp">Criar conta</a>
+            <p class="login-link">
+                Já tem conta? <a href="${pageContext.request.contextPath}/login.jsp">Fazer login</a>
             </p>
         </div>
     </div>
 
     <script>
-        const emailInput = document.getElementById('email');
-        const rememberCheckbox = document.querySelector('input[name="remember"]');
+        const form = document.getElementById('signupForm');
+        const senhaInput = document.getElementById('senha');
+        const confirmaSenhaInput = document.getElementById('confirmaSenha');
 
-        const savedEmail = localStorage.getItem('userEmail');
-        if (savedEmail) {
-            emailInput.value = savedEmail;
-            rememberCheckbox.checked = true;
-        }
+        form.addEventListener('submit', function(e) {
+            if (senhaInput.value !== confirmaSenhaInput.value) {
+                e.preventDefault();
+                alert('As senhas não correspondem!');
+                return false;
+            }
 
-        rememberCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                localStorage.setItem('userEmail', emailInput.value);
-            } else {
-                localStorage.removeItem('userEmail');
+            if (senhaInput.value.length < 6) {
+                e.preventDefault();
+                alert('A senha deve ter no mínimo 6 caracteres!');
+                return false;
             }
         });
 
-        emailInput.addEventListener('change', function() {
-            if (rememberCheckbox.checked) {
-                localStorage.setItem('userEmail', this.value);
+        // Validação em tempo real
+        confirmaSenhaInput.addEventListener('input', function() {
+            if (this.value !== senhaInput.value) {
+                this.style.borderColor = '#dc2626';
+            } else {
+                this.style.borderColor = '#e0d5c7';
             }
         });
     </script>

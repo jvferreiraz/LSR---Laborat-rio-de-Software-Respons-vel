@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="dao.ItemDAO,model.Item,java.util.List" %>
+<%@ page import="dao.ItemDAO,model.Item,model.Usuario,java.util.List" %>
 <%
-  List<Item> lista = new ItemDAO().listarTodos();
+    Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+    if (usuarioLogado == null) {
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        return;
+    }
+    List<Item> lista = new ItemDAO().listarTodos();
 %>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -90,6 +95,7 @@
             font-weight: 900;
             letter-spacing: 0.5px;
             color: var(--primary);
+            text-decoration: none;
         }
 
         .brand i {
@@ -435,6 +441,51 @@
             color: #059669;
         }
 
+        /* ================= CARD ACTIONS ================= */
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-edit, .btn-delete {
+            flex: 1;
+            padding: 9px 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-edit {
+            background: rgba(139, 111, 71, 0.1);
+            color: var(--primary);
+        }
+
+        .btn-edit:hover {
+            background: rgba(139, 111, 71, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+        }
+
+        .btn-delete:hover {
+            background: rgba(239, 68, 68, 0.2);
+            transform: translateY(-2px);
+        }
+
         /* ================= SOBRE ================= */
 
         .sobre {
@@ -474,8 +525,14 @@
             gap: 40px;
         }
 
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
         .footer-col h3 {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             font-size: 1.2rem;
         }
 
@@ -509,6 +566,7 @@
             background: rgba(255, 255, 255, 0.08);
             color: #fff;
             transition: var(--transition);
+            width: 100%;
         }
 
         .contactform input:focus,
@@ -535,6 +593,7 @@
         }
 
         .modal2-content {
+            position: relative;
             width: min(580px, 94vw);
             padding: 30px;
             border-radius: 30px;
@@ -547,6 +606,7 @@
             display: flex;
             flex-direction: column;
             gap: 14px;
+            margin-top: 20px;
         }
 
         .modal2-content input,
@@ -558,6 +618,8 @@
             font-size: 1rem;
             outline: none;
             transition: var(--transition);
+            background-color: #fff;
+            color: var(--text);
         }
 
         .modal2-content input:focus,
@@ -579,31 +641,6 @@
 
         .close2:hover {
             color: var(--primary);
-        }
-
-        /* ================= FAB ================= */
-
-        .fab {
-            position: fixed;
-            right: 28px;
-            bottom: 28px;
-            width: 64px;
-            height: 64px;
-            border: none;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            background: var(--gradient);
-            color: #fff;
-            font-size: 1.7rem;
-            cursor: pointer;
-            box-shadow: 0 18px 40px rgba(139, 111, 71, 0.28);
-            transition: var(--transition);
-            z-index: 999;
-        }
-
-        .fab:hover {
-            transform: translateY(-5px) scale(1.06);
         }
 
         /* ================= SCROLL ================= */
@@ -655,11 +692,11 @@
 </head>
 <body>
 <nav class="modern-navbar" id="mainNavbar" aria-label="Navegação Principal">
-    <div class="container">
+    <div class="container nav-wrapper">
         <a href="#inicio" class="brand" aria-label="FindGo - Ir para o início">
             <i class="fas fa-location-arrow" aria-hidden="true"></i> FindGo
         </a>
-        
+
         <div class="nav-content">
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
@@ -668,7 +705,7 @@
                 <li><a href="#contato">Contato</a></li>
                 <li>
                     <button class="logout-btn" onclick="logout()" type="button">
-                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sair
+                        <i class="fas fa-sign-out-alt"></i> <%= usuarioLogado.getNome() %> - Sair
                     </button>
                 </li>
             </ul>
@@ -702,7 +739,7 @@
 
     <div class="modern-cards">
         <% for (Item i : lista) { %>
-        <div class="modern-card <%= i.getTipo() %>" data-type="<%= i.getTipo() %>">
+        <div class="modern-card" data-type="<%= i.getTipo() %>">
             <div class="icon"><i class="fas fa-box"></i></div>
             <div class="details">
                 <h3><%= i.getTitulo() %></h3>
@@ -711,6 +748,14 @@
                 </span>
                 <p class="local"><i class="fas fa-map-marker-alt"></i> <%= i.getLocalizacao() %></p>
                 <small><%= i.getDescricao() %></small>
+                <div class="card-actions">
+                    <button class="btn-edit" onclick="abrirEdicao(<%= i.getId() %>, '<%= i.getTitulo().replace("'", "\\'") %>', '<%= i.getTipo() %>', '<%= i.getLocalizacao().replace("'", "\\'") %>', '<%= i.getDescricao().replace("'", "\\'") %>')">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="btn-delete" onclick="confirmarDelecao(<%= i.getId() %>)">
+                        <i class="fas fa-trash"></i> Deletar
+                    </button>
+                </div>
             </div>
         </div>
         <% } %>
@@ -725,24 +770,27 @@
 </section>
 
 <footer class="modern-footer" id="contato">
-    <div class="footer-col">
-        <h3>Fale com a gente</h3>
-        <form class="contactform">
-            <input type="text" placeholder="Seu nome" required>
-            <input type="email" placeholder="Seu email" required>
-            <textarea placeholder="Digite sua mensagem" required></textarea>
-            <button class="cta" type="button">Enviar</button>
-        </form>
-    </div>
-    <div class="footer-col">
-        <h3>Transparência & Utilidade</h3>
-        <p>O FindGo é gratuito e sempre será.<br>Relate, encontre e ajude alguém localmente!</p>
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h3>Fale com a gente</h3>
+            <form class="contactform">
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu email" required>
+                <textarea placeholder="Digite sua mensagem" required></textarea>
+                <button class="cta" type="button">Enviar</button>
+            </form>
+        </div>
+        <div class="footer-col">
+            <h3>Transparência & Utilidade</h3>
+            <p>O FindGo é gratuito e sempre será.<br>Relate, encontre e ajude alguém localmente!</p>
+        </div>
     </div>
     <div class="footer-copy">
         <small>&copy; 2026 FindGo • Todos os direitos reservados</small>
     </div>
 </footer>
 
+<!-- MODAL PUBLICAR NOVO ITEM -->
 <div id="modalAnuncio" class="modal2">
     <div class="modal2-content">
         <span class="close2" onclick="document.getElementById('modalAnuncio').style.display='none'">&times;</span>
@@ -761,11 +809,46 @@
     </div>
 </div>
 
+<!-- MODAL EDITAR ITEM -->
+<div id="modalEdicao" class="modal2">
+    <div class="modal2-content">
+        <span class="close2" onclick="document.getElementById('modalEdicao').style.display='none'">&times;</span>
+        <h2>Editar Item</h2>
+        <form action="${pageContext.request.contextPath}/editar" method="post">
+            <input type="hidden" id="editId" name="id">
+            <input class="f-title" id="editTitulo" name="titulo" type="text" placeholder="Título do item" required>
+            <select class="f-type" id="editTipo" name="tipo" required>
+                <option value="">Tipo</option>
+                <option value="perdido">Perdido</option>
+                <option value="achado">Achado</option>
+            </select>
+            <input class="f-local" id="editLocal" name="localizacao" type="text" placeholder="Onde você viu/achou?" required>
+            <textarea class="f-desc" id="editDesc" name="descricao" placeholder="Descreva o item" required></textarea>
+            <button class="cta" type="submit">Atualizar</button>
+        </form>
+    </div>
+</div>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <script>
     function logout() {
-        window.location.href = '${pageContext.request.contextPath}/login.jsp';
+        window.location.href = '${pageContext.request.contextPath}/logout';
+    }
+
+    function abrirEdicao(id, titulo, tipo, localizacao, descricao) {
+        document.getElementById('editId').value = id;
+        document.getElementById('editTitulo').value = titulo;
+        document.getElementById('editTipo').value = tipo;
+        document.getElementById('editLocal').value = localizacao;
+        document.getElementById('editDesc').value = descricao;
+        document.getElementById('modalEdicao').style.display = 'flex';
+    }
+
+    function confirmarDelecao(id) {
+        if (confirm('Tem certeza que deseja deletar este item? Esta ação é irreversível.')) {
+            window.location.href = '${pageContext.request.contextPath}/deletar?id=' + id;
+        }
     }
 
     window.addEventListener('scroll', function() {
@@ -790,20 +873,38 @@
     });
 
     const searchInput = document.getElementById("searchInput");
-    const cardsList = document.querySelectorAll(".modern-card");
 
     searchInput.addEventListener("input", () => {
         const value = searchInput.value.toLowerCase().trim();
-        if (value === "") {
-            cards.forEach(card => card.style.display = "block");
-            return;
-        }
 
-        cardsList.forEach(card => {
+        const filtroAtivo = document.querySelector(".filters button.active").dataset.filter;
+
+        cards.forEach(card => {
             const title = card.querySelector("h3").innerText.toLowerCase();
-            card.style.display = title.includes(value) ? "block" : "none";
+            const tipo = card.dataset.type;
+
+            const matchesSearch = value === "" || title.includes(value);
+            const matchesFilter = filtroAtivo === "todos" || tipo === filtroAtivo;
+
+            if (matchesSearch && matchesFilter) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
         });
     });
+
+    // Fecha modais ao clicar fora delas
+    window.onclick = function(event) {
+        const modalAnuncio = document.getElementById("modalAnuncio");
+        const modalEdicao = document.getElementById("modalEdicao");
+        if (event.target === modalAnuncio) {
+            modalAnuncio.style.display = "none";
+        }
+        if (event.target === modalEdicao) {
+            modalEdicao.style.display = "none";
+        }
+    }
 </script>
 </body>
 </html>

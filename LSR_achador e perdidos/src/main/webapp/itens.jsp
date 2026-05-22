@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="dao.ItemDAO,model.Item,java.util.List" %>
+<%@ page import="dao.ItemDAO,model.Item,model.Usuario,java.util.List" %>
 <%
-  List<Item> lista = new ItemDAO().listarTodos();
+    Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+    if (usuarioLogado == null) {
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        return;
+    }
+    List<Item> lista = new ItemDAO().listarTodos();
 %>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -686,7 +691,7 @@
                 <li><a href="<%=request.getContextPath()%>/index.jsp#contato">Contato</a></li>
                 <li>
                     <button class="logout-btn" onclick="logout()" type="button">
-                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sair
+                        <i class="fas fa-sign-out-alt"></i> <%= usuarioLogado.getNome() %> - Sair
                     </button>
                 </li>
             </ul>
@@ -814,7 +819,7 @@
 
 <script>
     function logout() {
-        window.location.href = '${pageContext.request.contextPath}/login.jsp';
+        window.location.href = '${pageContext.request.contextPath}/logout';
     }
 
     function abrirEdicao(id, titulo, tipo, localizacao, descricao) {
