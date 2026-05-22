@@ -1,6 +1,7 @@
 package servlet;
 
 import dao.UsuarioDAO;
+import model.EmailService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,13 +31,23 @@ public class EsqueceuSenhaServlet extends HttpServlet {
             return;
         }
 
-        boolean tokenGerado = new UsuarioDAO().gerarTokenReset(email);
+        // Gera o token de reset
+        String token = new UsuarioDAO().gerarTokenReset(email);
 
-        if (tokenGerado) {
-            // AQUI você enviaria um email para o usuário
-            // Por enquanto, vamos simular armazenando o email em sessão
-            req.getSession().setAttribute("emailReset", email);
-            req.setAttribute("sucesso", "Um link de recuperação foi enviado para seu email! Verifique sua caixa de entrada.");
+        if (token != null && !token.isEmpty()) {
+            // Monta a URL base da aplicação
+            String urlBase = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + req.getContextPath();
+
+            // Envia o email
+            EmailService emailService = new EmailService();
+            boolean emailEnviado = emailService.enviarEmailRecuperacao(email, token, urlBase);
+
+            if (emailEnviado) {
+                req.setAttribute("sucesso", "Um link de recuperação foi enviado para seu email! Verifique sua caixa de entrada.");
+            } else {
+                req.setAttribute("erro", "Erro ao enviar email. Tente novamente mais tarde!");
+            }
+
             req.getRequestDispatcher("/esqueceu-senha.jsp").forward(req, resp);
         } else {
             req.setAttribute("erro", "Erro ao gerar token de reset. Tente novamente!");

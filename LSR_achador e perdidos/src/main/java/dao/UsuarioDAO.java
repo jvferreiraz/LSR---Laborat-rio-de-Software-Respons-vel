@@ -70,7 +70,7 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean gerarTokenReset(String email) {
+    public String gerarTokenReset(String email) {
         String sqlVerificar = "SELECT id FROM usuarios WHERE email = ?";
         String sqlAtualizar = "UPDATE usuarios SET token_reset = ?, data_expiracao_token = DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE email = ?";
 
@@ -80,7 +80,7 @@ public class UsuarioDAO {
                 psVerificar.setString(1, email);
                 try (ResultSet rs = psVerificar.executeQuery()) {
                     if (!rs.next()) {
-                        return false; // Email não existe
+                        return null; // Email não existe
                     }
                 }
             }
@@ -91,7 +91,7 @@ public class UsuarioDAO {
                 psAtualizar.setString(1, token);
                 psAtualizar.setString(2, email);
                 psAtualizar.executeUpdate();
-                return true;
+                return token; // Retorna o token gerado
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
