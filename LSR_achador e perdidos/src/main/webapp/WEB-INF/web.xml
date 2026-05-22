@@ -5,6 +5,7 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!-- ==================== PUBLICAR SERVLET ==================== -->
     <servlet>
         <servlet-name>PublicarServlet</servlet-name>
         <servlet-class>servlet.PublicarServlet</servlet-class>
@@ -14,6 +15,7 @@
         <url-pattern>/publicar</url-pattern>
     </servlet-mapping>
 
+    <!-- ==================== EDITAR SERVLET ==================== -->
     <servlet>
         <servlet-name>EditarServlet</servlet-name>
         <servlet-class>servlet.EditarServlet</servlet-class>
@@ -23,6 +25,7 @@
         <url-pattern>/editar</url-pattern>
     </servlet-mapping>
 
+    <!-- ==================== DELETAR SERVLET ==================== -->
     <servlet>
         <servlet-name>DeletarServlet</servlet-name>
         <servlet-class>servlet.DeletarServlet</servlet-class>

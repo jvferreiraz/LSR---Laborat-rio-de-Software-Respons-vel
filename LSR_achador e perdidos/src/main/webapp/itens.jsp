@@ -214,20 +214,6 @@
             }
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            margin-bottom: 24px;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
         .hero-content h1 {
             font-size: clamp(2.8rem, 7vw, 5rem);
             line-height: 1.05;
