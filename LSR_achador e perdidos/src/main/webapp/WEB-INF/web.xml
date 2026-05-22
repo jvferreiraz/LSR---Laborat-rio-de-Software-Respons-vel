@@ -1,23 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name>LSR Web JSP</display-name>
-
-    <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
-    </welcome-file-list>
-
     <servlet>
         <servlet-name>PublicarServlet</servlet-name>
         <servlet-class>servlet.PublicarServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>PublicarServlet</servlet-name>
         <url-pattern>/publicar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditarServlet</servlet-name>
+        <servlet-class>servlet.EditarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditarServlet</servlet-name>
+        <url-pattern>/editar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeletarServlet</servlet-name>
+        <servlet-class>servlet.DeletarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletarServlet</servlet-name>
+        <url-pattern>/deletar</url-pattern>
     </servlet-mapping>
 
 </web-app>
