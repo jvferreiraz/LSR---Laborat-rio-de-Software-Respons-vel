@@ -1,13 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    String token = request.getParameter("token");
     String erro = (String) request.getAttribute("erro");
+
+    if (token == null || token.trim().isEmpty()) {
+        response.sendRedirect(request.getContextPath() + "/esqueceu-senha.jsp");
+        return;
+    }
 %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta - FindGo</title>
+    <title>Resetar Senha - FindGo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -60,7 +66,7 @@
             50% { transform: translateY(20px); }
         }
 
-        .signup-container {
+        .container {
             position: relative;
             z-index: 10;
             width: 100%;
@@ -68,7 +74,7 @@
             padding: 20px;
         }
 
-        .signup-card {
+        .card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -90,7 +96,7 @@
             }
         }
 
-        .signup-header {
+        .header {
             text-align: center;
             margin-bottom: 40px;
         }
@@ -100,14 +106,14 @@
             margin-bottom: 15px;
         }
 
-        .signup-header h1 {
+        .header h1 {
             font-size: 28px;
             color: #5d4037;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
-        .signup-header p {
+        .header p {
             color: #8b6f47;
             font-size: 14px;
         }
@@ -152,8 +158,6 @@
             font-size: 14px;
         }
 
-        input[type="text"],
-        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 12px 16px;
@@ -165,8 +169,6 @@
             background: #fafaf8;
         }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
         input[type="password"]:focus {
             outline: none;
             border-color: #d4a574;
@@ -194,7 +196,7 @@
             font-size: 10px;
         }
 
-        .signup-btn {
+        .submit-btn {
             width: 100%;
             padding: 13px;
             background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
@@ -209,39 +211,35 @@
             margin-top: 10px;
         }
 
-        .signup-btn:hover {
+        .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 30px rgba(139, 111, 71, 0.4);
         }
 
-        .signup-btn:active {
-            transform: translateY(0);
-        }
-
-        .login-link {
+        .back-link {
             text-align: center;
             color: #8b6f47;
             font-size: 14px;
             margin-top: 25px;
         }
 
-        .login-link a {
+        .back-link a {
             color: #d4a574;
             text-decoration: none;
             font-weight: 700;
             transition: color 0.3s ease;
         }
 
-        .login-link a:hover {
+        .back-link a:hover {
             color: #8b6f47;
         }
 
         @media (max-width: 480px) {
-            .signup-card {
+            .card {
                 padding: 40px 25px;
             }
 
-            .signup-header h1 {
+            .header h1 {
                 font-size: 24px;
             }
 
@@ -252,12 +250,12 @@
     </style>
 </head>
 <body>
-    <div class="signup-container">
-        <div class="signup-card">
-            <div class="signup-header">
-                <div class="logo"><i class="fas fa-location-arrow"></i></div>
-                <h1>Criar Conta</h1>
-                <p>Junte-se a nós na busca por itens perdidos</p>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="logo"><i class="fas fa-lock"></i></div>
+                <h1>Criar Nova Senha</h1>
+                <p>Digite sua nova senha abaixo</p>
             </div>
 
             <% if (erro != null) { %>
@@ -266,28 +264,16 @@
                 </div>
             <% } %>
 
-            <form action="${pageContext.request.contextPath}/signup" method="POST" id="signupForm">
-                <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
-                </div>
+            <form action="${pageContext.request.contextPath}/resetar-senha" method="POST" id="resetForm">
+                <input type="hidden" name="token" value="<%= token %>">
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" placeholder="Escolha uma senha forte" required>
+                    <label for="novaSenha">Nova Senha</label>
+                    <input type="password" id="novaSenha" name="novaSenha" placeholder="Digite sua nova senha" required>
                     <div class="password-requirements">
                         <div class="requirement">
                             <i class="fas fa-circle"></i>
                             <span>Mínimo 6 caracteres</span>
-                        </div>
-                        <div class="requirement">
-                            <i class="fas fa-circle"></i>
-                            <span>Dica: Use letras, números e símbolos</span>
                         </div>
                     </div>
                 </div>
@@ -297,38 +283,40 @@
                     <input type="password" id="confirmaSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
                 </div>
 
-                <button type="submit" class="signup-btn">
-                    <i class="fas fa-user-plus"></i> Criar Conta
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check"></i> Atualizar Senha
                 </button>
             </form>
 
-            <p class="login-link">
-                Já tem conta? <a href="${pageContext.request.contextPath}/login.jsp">Fazer login</a>
+            <p class="back-link">
+                <a href="${pageContext.request.contextPath}/login.jsp">
+                    <i class="fas fa-arrow-left"></i> Voltar para login
+                </a>
             </p>
         </div>
     </div>
 
     <script>
-        const form = document.getElementById('signupForm');
-        const senhaInput = document.getElementById('senha');
-        const confirmaSenhaInput = document.getElementById('confirmaSenha');
+        const form = document.getElementById('resetForm');
+        const novaSenha = document.getElementById('novaSenha');
+        const confirmaSenha = document.getElementById('confirmaSenha');
 
         form.addEventListener('submit', function(e) {
-            if (senhaInput.value !== confirmaSenhaInput.value) {
+            if (novaSenha.value !== confirmaSenha.value) {
                 e.preventDefault();
                 alert('As senhas não correspondem!');
                 return false;
             }
 
-            if (senhaInput.value.length < 6) {
+            if (novaSenha.value.length < 6) {
                 e.preventDefault();
                 alert('A senha deve ter no mínimo 6 caracteres!');
                 return false;
             }
         });
 
-        confirmaSenhaInput.addEventListener('input', function() {
-            if (this.value !== senhaInput.value) {
+        confirmaSenha.addEventListener('input', function() {
+            if (this.value !== novaSenha.value) {
                 this.style.borderColor = '#dc2626';
             } else {
                 this.style.borderColor = '#e0d5c7';

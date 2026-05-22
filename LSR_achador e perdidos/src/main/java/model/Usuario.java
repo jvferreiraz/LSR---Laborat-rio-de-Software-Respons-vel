@@ -7,6 +7,8 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String tokenReset;
+    private Timestamp dataExpiracaoToken;
     private Timestamp dataCriacao;
 
     public int getId() { return id; }
@@ -20,6 +22,12 @@ public class Usuario {
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+
+    public String getTokenReset() { return tokenReset; }
+    public void setTokenReset(String tokenReset) { this.tokenReset = tokenReset; }
+
+    public Timestamp getDataExpiracaoToken() { return dataExpiracaoToken; }
+    public void setDataExpiracaoToken(Timestamp dataExpiracaoToken) { this.dataExpiracaoToken = dataExpiracaoToken; }
 
     public Timestamp getDataCriacao() { return dataCriacao; }
     public void setDataCriacao(Timestamp dataCriacao) { this.dataCriacao = dataCriacao; }

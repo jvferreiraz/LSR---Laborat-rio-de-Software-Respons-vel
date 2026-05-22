@@ -35,6 +35,26 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
+    <!-- ==================== ESQUECEU SENHA SERVLET ==================== -->
+    <servlet>
+        <servlet-name>EsqueceuSenhaServlet</servlet-name>
+        <servlet-class>servlet.EsqueceuSenhaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EsqueceuSenhaServlet</servlet-name>
+        <url-pattern>/esqueceu-senha</url-pattern>
+    </servlet-mapping>
+
+    <!-- ==================== RESETAR SENHA SERVLET ==================== -->
+    <servlet>
+        <servlet-name>ResetarSenhaServlet</servlet-name>
+        <servlet-class>servlet.ResetarSenhaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResetarSenhaServlet</servlet-name>
+        <url-pattern>/resetar-senha</url-pattern>
+    </servlet-mapping>
+
     <!-- ==================== PUBLICAR SERVLET ==================== -->
     <servlet>
         <servlet-name>PublicarServlet</servlet-name>

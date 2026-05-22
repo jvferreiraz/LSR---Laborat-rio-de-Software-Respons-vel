@@ -119,6 +119,9 @@
             margin-bottom: 20px;
             font-size: 14px;
             animation: slideDown 0.3s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .alert-error {
@@ -190,6 +193,7 @@
             align-items: center;
             cursor: pointer;
             font-weight: 500;
+            color: #5d4037;
         }
 
         .remember-forgot input[type="checkbox"] {
@@ -232,63 +236,11 @@
             transform: translateY(0);
         }
 
-        .divider {
-            text-align: center;
-            margin: 30px 0;
-            position: relative;
-            color: #c0b5a8;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .divider::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #e0d5c7;
-        }
-
-        .divider::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #e0d5c7;
-        }
-
-        .social-login {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .social-btn {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #e0d5c7;
-            background: #fafaf8;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            color: #5d4037;
-        }
-
-        .social-btn:hover {
-            border-color: #d4a574;
-            background: #fff;
-            transform: translateY(-2px);
-        }
-
         .signup-link {
             text-align: center;
             color: #8b6f47;
             font-size: 14px;
+            margin-top: 25px;
         }
 
         .signup-link a {
@@ -354,27 +306,13 @@
                         <input type="checkbox" name="remember">
                         Lembrar de mim
                     </label>
-                    <a href="#">Esqueceu a senha?</a>
+                    <a href="${pageContext.request.contextPath}/esqueceu-senha.jsp">Esqueceu a senha?</a>
                 </div>
 
                 <button type="submit" class="login-btn">
                     <i class="fas fa-sign-in-alt"></i> Entrar
                 </button>
             </form>
-
-            <div class="divider">OU</div>
-
-            <div class="social-login">
-                <button class="social-btn" type="button" title="Login com Google" onclick="alert('Google Login não configurado')">
-                    <i class="fab fa-google"></i>
-                </button>
-                <button class="social-btn" type="button" title="Login com Facebook" onclick="alert('Facebook Login não configurado')">
-                    <i class="fab fa-facebook"></i>
-                </button>
-                <button class="social-btn" type="button" title="Login com GitHub" onclick="alert('GitHub Login não configurado')">
-                    <i class="fab fa-github"></i>
-                </button>
-            </div>
 
             <p class="signup-link">
                 Não tem conta? <a href="${pageContext.request.contextPath}/signup.jsp">Criar conta</a>
