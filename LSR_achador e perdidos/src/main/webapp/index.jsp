@@ -700,7 +700,7 @@
         <div class="nav-content">
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
-                <li><a href="${pageContext.request.contextPath}/itens.jsp">Itens</a></li>
+                <li><a href="#itens">Itens</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
                 <li>

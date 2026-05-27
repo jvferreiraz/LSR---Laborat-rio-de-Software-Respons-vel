@@ -85,4 +85,9 @@
         <url-pattern>/deletar</url-pattern>
     </servlet-mapping>
 
+    <!-- ==================== WELCOME FILES ==================== -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
 </web-app>

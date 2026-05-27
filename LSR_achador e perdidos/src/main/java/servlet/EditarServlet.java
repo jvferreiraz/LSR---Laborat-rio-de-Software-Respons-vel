@@ -27,7 +27,7 @@ public class EditarServlet extends HttpServlet {
 
             new ItemDAO().atualizar(item);
 
-            resp.sendRedirect(req.getContextPath() + "/itens.jsp");
+            resp.sendRedirect(req.getContextPath() + "/index.jsp#itens");
         } catch (NumberFormatException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido");
         }

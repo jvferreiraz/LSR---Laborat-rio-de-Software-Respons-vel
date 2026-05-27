@@ -22,6 +22,6 @@ public class PublicarServlet extends HttpServlet {
 
         new ItemDAO().inserir(item);
 
-        resp.sendRedirect(req.getContextPath() + "/itens.jsp");
+        resp.sendRedirect(req.getContextPath() + "/index.jsp#itens");
     }
 }

@@ -17,7 +17,7 @@ public class DeletarServlet extends HttpServlet {
         try {
             int id = Integer.parseInt(req.getParameter("id"));
             new ItemDAO().deletar(id);
-            resp.sendRedirect(req.getContextPath() + "/itens.jsp");
+            resp.sendRedirect(req.getContextPath() + "/index.jsp#itens");
         } catch (NumberFormatException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido");
         }
