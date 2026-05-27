@@ -486,29 +486,6 @@
             transform: translateY(-2px);
         }
 
-        /* ================= SOBRE ================= */
-
-        .sobre {
-            padding: 110px 20px;
-            text-align: center;
-        }
-
-        .sobre-content {
-            width: min(760px, 100%);
-            margin: auto;
-        }
-
-        .sobre h2 {
-            font-size: 2.3rem;
-            margin-bottom: 24px;
-        }
-
-        .sobre p {
-            color: var(--text-soft);
-            line-height: 1.9;
-            font-size: 1.08rem;
-        }
-
         /* ================= FOOTER ================= */
 
         .modern-footer {
@@ -701,7 +678,6 @@
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#itens">Itens</a></li>
-                <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
                 <li>
                     <button class="logout-btn" onclick="logout()" type="button">
@@ -759,13 +735,6 @@
             </div>
         </div>
         <% } %>
-    </div>
-</section>
-
-<section class="sobre" id="sobre">
-    <div class="sobre-content">
-        <h2>Como funciona?</h2>
-        <p>FindGo conecta pessoas honestas.<br>Relate o que achou ou perdeu.<br>Filtros inteligentes e uma plataforma ética, feita para todos.<br><i class="fas fa-heart"></i></p>
     </div>
 </section>
 
