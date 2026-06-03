@@ -1,0 +1,57 @@
+27-May-2026 12:22:55.643 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.109
+27-May-2026 12:22:55.646 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 1 2025 12:15:33 UTC
+27-May-2026 12:22:55.646 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.109.0
+27-May-2026 12:22:55.646 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+27-May-2026 12:22:55.646 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+27-May-2026 12:22:55.646 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+27-May-2026 12:22:55.646 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Users\thiago_g_voltolini\.jdks\ms-21.0.11
+27-May-2026 12:22:55.646 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.11+10-LTS
+27-May-2026 12:22:55.647 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Microsoft
+27-May-2026 12:22:55.647 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Eclipse\eclipse-workspace\LSR---Laborat-rio-de-Software-Respons-vel\LSR---Laborat-rio-de-Software-Respons-vel\LSR_achador e perdidos\src\main\webapp\WEB-INF\lib
+27-May-2026 12:22:55.647 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Eclipse\apache-tomcat-9.0.109
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Eclipse\apache-tomcat-9.0.109
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Eclipse\eclipse-workspace\LSR---Laborat-rio-de-Software-Respons-vel\LSR---Laborat-rio-de-Software-Respons-vel\LSR_achador e perdidos\src\main\webapp\WEB-INF\lib
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Eclipse\eclipse-workspace\LSR---Laborat-rio-de-Software-Respons-vel\LSR---Laborat-rio-de-Software-Respons-vel\LSR_achador e perdidos\src\main\webapp\WEB-INF\lib\temp
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Eclipse\eclipse-workspace\LSR---Laborat-rio-de-Software-Respons-vel\LSR---Laborat-rio-de-Software-Respons-vel\LSR_achador e perdidos\src\main\webapp\WEB-INF\lib\conf\logging.properties
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2025.1.3\lib\idea_rt.jar=52658
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+27-May-2026 12:22:55.652 INFORMAÇÕES [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+27-May-2026 12:22:55.655 INFORMAÇÕES [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+27-May-2026 12:22:55.655 INFORMAÇÕES [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+27-May-2026 12:22:55.655 INFORMAÇÕES [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+27-May-2026 12:22:55.661 INFORMAÇÕES [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+27-May-2026 12:22:55.905 INFORMAÇÕES [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+27-May-2026 12:22:55.922 INFORMAÇÕES [main] org.apache.catalina.startup.Catalina.load Server initialization in [423] milliseconds
+27-May-2026 12:22:55.962 INFORMAÇÕES [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+27-May-2026 12:22:55.963 INFORMAÇÕES [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.109]
+27-May-2026 12:22:55.971 INFORMAÇÕES [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Eclipse\eclipse-workspace\LSR---Laborat-rio-de-Software-Respons-vel\LSR---Laborat-rio-de-Software-Respons-vel\LSR_achador e perdidos\src\main\webapp\WEB-INF\lib\conf\Catalina\localhost\lsrWeb.xml]
+27-May-2026 12:22:56.757 INFORMAÇÕES [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+27-May-2026 12:22:56.817 INFORMAÇÕES [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Eclipse\eclipse-workspace\LSR---Laborat-rio-de-Software-Respons-vel\LSR---Laborat-rio-de-Software-Respons-vel\LSR_achador e perdidos\src\main\webapp\WEB-INF\lib\conf\Catalina\localhost\lsrWeb.xml] has finished in [844] ms
+27-May-2026 12:22:56.820 INFORMAÇÕES [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+27-May-2026 12:22:56.834 INFORMAÇÕES [main] org.apache.catalina.startup.Catalina.start Server startup in [911] milliseconds
+27-May-2026 12:22:56.838 GRAVE [main] org.apache.catalina.core.StandardServer.await Failed to create server shutdown socket on address [localhost] and port [8005] (base port [8005] and offset [0])
+	java.net.BindException: Address already in use: bind
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:577)
+		at java.base/sun.nio.ch.Net.bind(Net.java:566)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:537)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:829)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:777)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+27-May-2026 12:22:56.839 INFORMAÇÕES [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+27-May-2026 12:22:56.843 INFORMAÇÕES [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+27-May-2026 12:22:56.849 INFORMAÇÕES [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+27-May-2026 12:22:56.851 INFORMAÇÕES [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

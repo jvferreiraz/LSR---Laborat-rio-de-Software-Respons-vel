@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="C:/Eclipse/eclipse-workspace/LSR---Laborat-rio-de-Software-Respons-vel/LSR---Laborat-rio-de-Software-Respons-vel/LSR_achador e perdidos/src/main/webapp">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="C:/Eclipse/eclipse-workspace/LSR---Laborat-rio-de-Software-Respons-vel/LSR---Laborat-rio-de-Software-Respons-vel/LSR_achador e perdidos/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/javax/servlet/jstl/1.2/jstl-1.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jstl-1.2.jar"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/mysql-connector-j-8.4.0.jar"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/com/google/protobuf/protobuf-java/3.25.1/protobuf-java-3.25.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/protobuf-java-3.25.1.jar"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/com/sun/mail/javax.mail/1.6.2/javax.mail-1.6.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/javax.mail-1.6.2.jar"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/com/sun/mail/smtp/1.6.2/smtp-1.6.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/smtp-1.6.2.jar"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/mailapi-1.6.2.jar"/>
+    <PostResources base="C:/Users/thiago_g_voltolini/.m2/repository/javax/activation/activation/1.1.1/activation-1.1.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/activation-1.1.1.jar"/>
+  </Resources>
+</Context>

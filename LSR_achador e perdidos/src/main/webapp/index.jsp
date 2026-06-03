@@ -739,16 +739,15 @@
 </section>
 
 <footer class="modern-footer" id="contato">
-    <div class="container footer-grid">
-        <div class="footer-col">
-            <h3>Fale com a gente</h3>
-            <form class="contactform">
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu email" required>
-                <textarea placeholder="Digite sua mensagem" required></textarea>
-                <button class="cta" type="button">Enviar</button>
-            </form>
-        </div>
+
+<!-- NOVO: Seção de Email para Escola -->
+<div class="footer-col">
+    <h3>📧 Contato com a Escola</h3>
+    <p style="color: #cbd5e1; margin-bottom: 15px;">Envie suas dúvidas ou sugestões diretamente para a escola FindGo.</p>
+    <button class="cta" type="button" onclick="abrirModalEmailEscola()" style="width: 100%;">
+        <i class="fas fa-envelope"></i> Enviar Email
+    </button>
+</div>
         <div class="footer-col">
             <h3>Transparência & Utilidade</h3>
             <p>O FindGo é gratuito e sempre será.<br>Relate, encontre e ajude alguém localmente!</p>
@@ -872,6 +871,34 @@
         }
         if (event.target === modalEdicao) {
             modalEdicao.style.display = "none";
+        }
+    }
+</script>
+<!-- MODAL ENVIAR EMAIL PARA ESCOLA -->
+<div id="modalEmailEscola" class="modal2">
+    <div class="modal2-content">
+        <span class="close2" onclick="document.getElementById('modalEmailEscola').style.display='none'">&times;</span>
+        <h2><i class="fas fa-envelope"></i> Enviar Email para Escola</h2>
+        <form action="${pageContext.request.contextPath}/enviar-email-escola" method="post">
+            <textarea name="mensagem" placeholder="Digite sua mensagem..." required
+                style="border: 1px solid var(--border); padding: 14px 16px; border-radius: 16px; font-size: 1rem; outline: none; min-height: 120px; resize: none;"></textarea>
+            <button class="cta" type="submit">
+                <i class="fas fa-paper-plane"></i> Enviar
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function abrirModalEmailEscola() {
+        document.getElementById('modalEmailEscola').style.display = 'flex';
+    }
+
+    // Fecha o modal ao clicar fora
+    window.onclick = function(event) {
+        const modal = document.getElementById('modalEmailEscola');
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
     }
 </script>

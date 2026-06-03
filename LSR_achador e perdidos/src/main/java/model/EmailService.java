@@ -100,4 +100,67 @@ public class EmailService {
             return false;
         }
     }
+    // Adicione este método à classe EmailService existente:
+
+    public boolean enviarEmailParaEscola(String nomeUsuario, String emailUsuario, String mensagem) {
+        try {
+            System.out.println("📧 Enviando email do usuário para a escola...");
+            System.out.println("   Usuário: " + nomeUsuario);
+            System.out.println("   Email do usuário: " + emailUsuario);
+
+            Properties props = new Properties();
+            props.put("mail.smtp.host", host);
+            props.put("mail.smtp.port", porta);
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.starttls.required", "true");
+            props.put("mail.smtp.connectiontimeout", "10000");
+            props.put("mail.smtp.timeout", "10000");
+
+            Session session = Session.getInstance(props, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(remetente, senha);
+                }
+            });
+            session.setDebug(false);
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(remetente));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(remetente)); // Envia para o email da escola (remetente)
+            message.setSubject("FindGo - Contato de Usuário: " + nomeUsuario);
+
+            String corpoEmail = "<html><body style=\"font-family: Arial, sans-serif; background-color: #f5f5f5;\">"
+                    + "<div style=\"max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">"
+                    + "<div style=\"text-align: center; margin-bottom: 30px;\">"
+                    + "<h2 style=\"color: #8B7355; margin: 0;\">📬 Novo Contato via FindGo</h2>"
+                    + "</div>"
+                    + "<p style=\"color: #333; font-size: 16px;\"><strong>Informações do usuário:</strong></p>"
+                    + "<ul style=\"color: #555; font-size: 15px;\">"
+                    + "<li><strong>Nome:</strong> " + nomeUsuario + "</li>"
+                    + "<li><strong>Email:</strong> " + emailUsuario + "</li>"
+                    + "</ul>"
+                    + "<hr style=\"border: none; border-top: 1px solid #ddd; margin: 20px 0;\">"
+                    + "<p style=\"color: #333; font-size: 16px;\"><strong>Mensagem:</strong></p>"
+                    + "<div style=\"background-color: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 4px solid #8B7355;\">"
+                    + "<p style=\"color: #555; margin: 0; line-height: 1.6;\">" + (mensagem == null || mensagem.isEmpty() ? "Nenhuma mensagem adicional" : mensagem) + "</p>"
+                    + "</div>"
+                    + "<hr style=\"border: none; border-top: 1px solid #ddd; margin: 30px 0;\">"
+                    + "<p style=\"color: #999; font-size: 12px; text-align: center; margin: 0;\">© 2026 FindGo - Achador de Perdidos. Email enviado automaticamente.</p>"
+                    + "</div></body></html>";
+
+            message.setContent(corpoEmail, "text/html; charset=utf-8");
+
+            System.out.println("📤 Enviando email...");
+            Transport.send(message);
+
+            System.out.println("✅ Email enviado com sucesso para: " + remetente);
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("❌ ERRO ao enviar email: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
