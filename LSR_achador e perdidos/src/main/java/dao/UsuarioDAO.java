@@ -2,6 +2,7 @@ package dao;
 
 import br.com.util.ConnectionFactory;
 import model.Usuario;
+import model.PasswordUtils;
 import java.sql.*;
 import java.util.UUID;
 import java.time.LocalDateTime;
@@ -26,7 +27,9 @@ public class UsuarioDAO {
             try (PreparedStatement psInserir = con.prepareStatement(sqlInserir)) {
                 psInserir.setString(1, usuario.getNome());
                 psInserir.setString(2, usuario.getEmail());
-                psInserir.setString(3, usuario.getSenha());
+                // Criptografa a senha com bcrypt antes de inserir no banco
+                String senhaCriptografada = PasswordUtils.criptografarSenha(usuario.getSenha());
+                psInserir.setString(3, senhaCriptografada);
                 psInserir.executeUpdate();
                 return true;
             }
@@ -36,19 +39,22 @@ public class UsuarioDAO {
     }
 
     public Usuario autenticar(String email, String senha) {
-        String sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+        String sql = "SELECT * FROM usuarios WHERE email = ?";
         try (Connection con = ConnectionFactory.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, email);
-            ps.setString(2, senha);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    Usuario usuario = new Usuario();
-                    usuario.setId(rs.getInt("id"));
-                    usuario.setNome(rs.getString("nome"));
-                    usuario.setEmail(rs.getString("email"));
-                    usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
-                    return usuario;
+                    String senhaArmazenada = rs.getString("senha");
+                    // Verifica se a senha informada corresponde ao hash armazenado
+                    if (PasswordUtils.verificarSenha(senha, senhaArmazenada)) {
+                        Usuario usuario = new Usuario();
+                        usuario.setId(rs.getInt("id"));
+                        usuario.setNome(rs.getString("nome"));
+                        usuario.setEmail(rs.getString("email"));
+                        usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
+                        return usuario;
+                    }
                 }
             }
         } catch (Exception e) {
@@ -134,9 +140,10 @@ public class UsuarioDAO {
                 }
             }
 
-            // Atualiza senha
+            // Criptografa a nova senha com bcrypt e atualiza
             try (PreparedStatement psAtualizar = con.prepareStatement(sqlAtualizar)) {
-                psAtualizar.setString(1, novaSenha);
+                String novaSenhaCriptografada = PasswordUtils.criptografarSenha(novaSenha);
+                psAtualizar.setString(1, novaSenhaCriptografada);
                 psAtualizar.setString(2, token);
                 psAtualizar.executeUpdate();
                 return true;

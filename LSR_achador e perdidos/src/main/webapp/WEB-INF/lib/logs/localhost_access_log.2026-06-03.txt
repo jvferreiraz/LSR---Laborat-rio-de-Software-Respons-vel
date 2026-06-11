@@ -36,3 +36,10 @@
 0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:12:48 -0300] "GET /lsrWeb/index.jsp HTTP/1.1" 200 28546
 0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:13:11 -0300] "POST /lsrWeb/enviar-email-escola HTTP/1.1" 302 -
 0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:13:11 -0300] "GET /lsrWeb/index.jsp HTTP/1.1" 200 28546
+0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:18:17 -0300] "GET /lsrWeb/resetar-senha.jsp?token=a9c27654-34d3-4e48-b6f2-a9ce295f0204 HTTP/1.1" 200 8958
+0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:18:38 -0300] "POST /lsrWeb/resetar-senha HTTP/1.1" 200 7693
+0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:22:13 -0300] "GET /lsrWeb/login.jsp HTTP/1.1" 200 9339
+0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:22:18 -0300] "POST /lsrWeb/login HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:22:18 -0300] "GET /lsrWeb/index.jsp HTTP/1.1" 200 28546
+0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:22:38 -0300] "POST /lsrWeb/enviar-email-escola HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2026:12:22:38 -0300] "GET /lsrWeb/index.jsp HTTP/1.1" 200 28546
