@@ -1,4 +1,4 @@
-# FindGo - Sistema de Achados e Perdidos
+ # FindGo - Sistema de Achados e Perdidos
 
 ![Badge Java](https://img.shields.io/badge/Java-79.2%25-ED8936?style=flat-square)
 ![Badge CSS](https://img.shields.io/badge/CSS-19.4%25-1572B6?style=flat-square)
@@ -218,3 +218,4 @@ O FindGo foi desenvolvido como parte do **Laboratório de Software Responsável*
 **Última atualização**: Junho de 2026
 
 *Relatar, encontre e ajude alguém localmente!*
+
