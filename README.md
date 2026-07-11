@@ -177,7 +177,7 @@ http://localhost:8080/LSR_achador-e-perdidos
 
 Para dúvidas, sugestões ou relatório de bugs:
 
-- 📧 **Email**: [Utilize o formulário de contato na plataforma]
+- 📧 **Email**: joaopedroaltinischmitz@gmail.com
 - 🐙 **GitHub Issues**: [Abra uma issue neste repositório](https://github.com/jvferreiraz/LSR---Laborat-rio-de-Software-Respons-vel/issues)
 - 👤 **Proprietário**: [@jvferreiraz](https://github.com/jvferreiraz)
 
@@ -217,6 +217,4 @@ O FindGo foi desenvolvido como parte do **Laboratório de Software Responsável*
 ---
 
 **Última atualização**: Junho de 2026
-
-*Relatar, encontre e ajude alguém localmente!*
 
