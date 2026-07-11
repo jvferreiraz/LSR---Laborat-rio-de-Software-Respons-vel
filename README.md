@@ -193,6 +193,7 @@ Este projeto é código aberto e está disponível para uso educacional e comuni
 
 - **Thiago Gonzalez Voltolini** - Desenvolvedor Principal
 - **jvferreiraz** - Proprietário do Repositório
+- **Joaopedroslk** - Analista do Projeto
 
 ---
 
